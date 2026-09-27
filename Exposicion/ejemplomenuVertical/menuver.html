@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Hace que el diseño responda correctamente en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú Vertical Básico</title>
+  <!-- Enlaza el CSS externo (puedes pegar el CSS en un archivo styles.css) -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!--
+    <nav> indica que el contenido es navegación principal.
+    aria-label describe brevemente el propósito del bloque de navegación para lectores de pantalla.
+  -->
+  <nav class="sidebar" aria-label="Menú principal">
+    <!--
+      Usamos una lista (<ul>) para los ítems del menú porque
+      una navegación es conceptualmente una lista de enlaces.
+    -->
+    
+  <ul class="menu">
+    <!-- Enlace externo a Google: abre en nueva pestaña -->
+    <li class="menu__item">
+      <a href="https://www-geeksforgeeks-org.translate.goog/css/pure-css-vertical-menu-with-submenus/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc&_x_tr_hist=true"
+         class="menu__link"
+         target="_blank"
+         rel="noopener noreferrer">
+        <span class="menu__text">Menu Vertical</span>
+      </a>
+    </li>
+
+    <!-- Enlace externo a YouTube: abre en nueva pestaña -->
+    <li class="menu__item">
+      <a href="https://prodpersonal.blogspot.com/2017/05/menu-vertical-desplegable-con-html-y-css.html"
+         class="menu__link"
+         target="_blank"
+         rel="noopener noreferrer">
+        <span class="menu__text">Menu Vertical 2</span>
+      </a>
+    </li>
+
+    <!-- Enlace interno a tu página local de imágenes -->
+    <li class="menu__item">
+      <a href="index.html" class="menu__link">
+        <span class="menu__text">Imágenes</span>
+      </a>
+    </li>
+
+    <!-- Opción deshabilitada -->
+    <li class="menu__item">
+      <a class="menu__link is-disabled" role="link" aria-disabled="true" tabindex="-1">
+        <span class="menu__text">Opción deshabilitada</span>
+      </a>
+    </li>
+  </ul>
+
+  </nav>
+
+  <!-- Contenido de la página para ver el efecto visual al lado del menú -->
+  <main class="content">
+    <h1>Bienvenido a mi sitio web</h1>
+    <p>Este es un ejemplo de un menú vertical básico con enlaces externos e internos.</p>
+    
+    <p>Haz clic en los enlaces del menú para visitar Google, YouTube o ver las imágenes en esta página.
+        Un menú vertical es una lista de enlaces colocados de manera vertical que permite navegar entre secciones o páginas. Se construye con HTML para la estructura y CSS para el diseño,
+         y puede incluir efectos, iconos y enlaces a cualquier sitio.
+
+
+    </p>
+    <section class="mosaico">
+  
+      <!-- Tarjeta 1-->
+  <a class="mosaico__item" href="https://es.wikipedia.org/wiki/Mellivora_capensis" target="_blank" rel="noopener noreferrer" aria-label="Tejon de la miel en Wikipedia">
+    <figure class="mosaico__figure">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz206-gWTfxx2rllCdc2B1Fo57drURG1y42g&s"
+        alt="Tejón en su hábitat natural"
+        loading="lazy"
+        class="mosaico__img"
+      >
+      <figcaption class="mosaico__caption">Tejon de la miel</figcaption>
+    </figure>
+  </a>
+
+  <!-- Tarjeta 2 -->
+  <a class="mosaico__item" href="https://es.wikipedia.org/wiki/Testudines" target="_blank" rel="noopener noreferrer" aria-label="Ir a YouTube">
+    <figure class="mosaico__figure">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD92HiBSRFg2p8-ESSFNhJ1pXtgvEzp2lwYw&s"
+        alt="Tortuga en la playa"
+        loading="lazy"
+        class="mosaico__img"
+      >
+      <figcaption class="mosaico__caption">Tortuga
+      </figcaption>
+    </figure>
+  </a>
+
+</section>
+  </main>
+
+</body>
+</html>

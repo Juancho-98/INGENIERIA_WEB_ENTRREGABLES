@@ -1,0 +1,133 @@
+
+:root {
+  --sidebar-width: 240px;        /* Ancho del menú lateral */
+  --bg-sidebar: #0f172a;         /* Fondo del menú (azul marino oscuro) */
+  --bg-sidebar-hover: #1e293b;   /* Fondo al pasar el mouse */
+  --text-default: #e2e8f0;       /* Texto normal (gris claro) */
+  --text-active: #ffffff;        /* Texto en estado activo */
+  --accent: #38bdf8;             /* Color de acento (celeste) */
+  --divider: #334155;            /* Color del separador */
+  --radius: 8px;                 /* Radio de borde para los enlaces */
+  --transition: 160ms ease;      /* Transición de hover/foco */
+  --content-bg: #0b1022;         /* Fondo del contenido */
+}
+
+* {
+  box-sizing: border-box; /* Evita cálculos raros de ancho/alto */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: var(--text-default);
+  background: var(--content-bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+/* Contenido principal: le dejamos margen a la izquierda para que no quede debajo del menú */
+.content {
+  margin-left: var(--sidebar-width);
+  padding: 24px;
+}
+
+.sidebar {
+  /* Fija el menú al lado izquierdo y ocupa toda la altura */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--divider);
+  padding: 16px 12px;
+  /* Permite scroll si el menú es más alto que la ventana */
+  overflow-y: auto;
+}
+
+/* Lista del menú: quitamos bullets y márgenes por defecto */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ítem individual del menú: opcionalmente podemos separar filas */
+.menu__item + .menu__item {
+  margin-top: 6px; /* Espacio entre enlaces */
+}
+
+/* Enlace del menú: bloque para ocupar todo el ancho clickeable */
+.menu__link {
+  display: flex;           
+  align-items: center;
+  gap: 10px;                      /* Espacio entre icono y texto */
+  width: 100%;
+  text-decoration: none;          /* Quitamos subrayado */
+  color: var(--text-default);     /* Color de texto */
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  outline: none;                  /* Manejamos foco con :focus-visible */
+}
+
+/* Estado hover (ratón encima): destaca el fondo */
+.menu__link:hover {
+  background: var(--bg-sidebar-hover);
+  color: var(--text-active);
+}
+
+/* Estado foco (teclado): borde/sombra para accesibilidad */
+.menu__link:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Estado activo (página actual):
+   - aria-current="page" marca el link actual.
+   - También puedes alternar una clase .is-active desde JS si controlas rutas. */
+.menu__link[aria-current="page"],
+.menu__link.is-active {
+  background: linear-gradient(90deg, rgba(56,189,248,0.16), transparent 60%);
+  color: var(--text-active);
+  border: 1px solid rgba(56,189,248,0.35);
+}
+
+/* Variante deshabilitada: no se puede clicar ni enfocar */
+.menu__link.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none; /* Evita clicks */
+}
+
+/* Texto dentro del enlace */
+.menu__text {
+  line-height: 1.2;
+  font-size: 0.95rem;
+}
+
+/* Separador opcional */
+.menu__divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 12px 6px;
+  border: 0;
+}
+
+/* ===========================
+   PEQUEÑA MEJORA RESPONSIVE
+   (en pantallas angostas, el menú se hace un poco más delgado)
+   =========================== */
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .menu__link {
+    padding: 10px 10px;
+  }
+}
